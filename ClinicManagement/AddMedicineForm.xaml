@@ -1,0 +1,103 @@
+<Window x:Class="WpfDashboardApp.AddMedicineFormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Add Medicine"
+        Width="500"
+        Height="650"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5"
+        ResizeMode="CanResizeWithGrip">
+
+    <Grid Background="#F5F5F5">
+        <!-- Outer Border for Centered Form -->
+        <Border Background="#D9D9D9" 
+                Width="400" 
+                Padding="20" 
+                CornerRadius="10" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center"
+                BorderBrush="#B0B0B0"
+                BorderThickness="1" Margin="0,68,0,0">
+
+            <!-- Main Content Grid -->
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Header -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Medicine Name -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Brand -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Supplier -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Price -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Expiry Date -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Quantity -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Buttons -->
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- Label Column -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Input Column -->
+                </Grid.ColumnDefinitions>
+
+                <!-- Header -->
+                <TextBlock Text="Enter Medicine Details" 
+                           FontSize="18" 
+                           FontWeight="Bold" 
+                           Foreground="#002B5C" 
+                           Grid.Row="0" Grid.ColumnSpan="2" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,20"/>
+
+                <!-- Medicine Name -->
+                <TextBlock Text="Medicine Name:" Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center" Foreground="#002B5C"/>
+                <TextBox x:Name="MedicineNameTextBox" Grid.Row="1" Grid.Column="1" Margin="5" Height="30" Background="#E8ECEF" Foreground="#002B5C" BorderBrush="#002B5C"/>
+
+                <!-- Brand -->
+                <TextBlock Text="Brand:" Grid.Row="2" Grid.Column="0" Margin="5" VerticalAlignment="Center" Foreground="#002B5C"/>
+                <TextBox x:Name="BrandTextBox" Grid.Row="2" Grid.Column="1" Margin="5" Height="30" Background="#E8ECEF" Foreground="#002B5C" BorderBrush="#002B5C"/>
+
+                <!-- Supplier -->
+                <TextBlock Text="Supplier Name:" Grid.Row="3" Grid.Column="0" Margin="5" VerticalAlignment="Center" Foreground="#002B5C"/>
+                <ComboBox 
+                x:Name="SupplierComboBox" 
+                Grid.Row="3" 
+                Grid.Column="1" 
+                Margin="5" 
+                Height="30" 
+                Background="#E8ECEF" 
+                Foreground="#002B5C" 
+                BorderBrush="#002B5C" 
+                IsEditable="True" 
+                StaysOpenOnEdit="True" 
+                KeyUp="SupplierComboBox_KeyUp" 
+                SelectionChanged="SupplierComboBox_SelectionChanged" 
+                DisplayMemberPath="Value" 
+                SelectedValuePath="Key" />  
+                <!-- Price -->
+                <TextBlock Text="Price:" Grid.Row="4" Grid.Column="0" Margin="5" VerticalAlignment="Center" Foreground="#002B5C"/>
+                <TextBox x:Name="PriceTextBox" Grid.Row="4" Grid.Column="1" Margin="5" Height="30" Background="#E8ECEF" Foreground="#002B5C" BorderBrush="#002B5C"/>
+
+                <!-- Expiry Date -->
+                <TextBlock Text="Expiry Date:" Grid.Row="5" Grid.Column="0" Margin="5" VerticalAlignment="Center" Foreground="#002B5C"/>
+                <DatePicker x:Name="ExpDatePicker" Grid.Row="5" Grid.Column="1" Margin="5" Height="30" Background="#E8ECEF" Foreground="#002B5C" BorderBrush="#002B5C"/>
+
+                <!-- Quantity -->
+                <TextBlock Text="Quantity:" Grid.Row="6" Grid.Column="0" Margin="5" VerticalAlignment="Center" Foreground="#002B5C"/>
+                <TextBox x:Name="QuantityTextBox" Grid.Row="6" Grid.Column="1" Margin="5" Height="30" Background="#E8ECEF" Foreground="#002B5C" BorderBrush="#002B5C"/>
+
+                <!-- Buttons -->
+                <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <Button Content="Add Medicine" Width="140" Height="40" Background="#00509E" Foreground="White" FontWeight="Bold" Margin="5" Click="SubmitAddMedicineButton_Click"/>
+                    <Button Content="Cancel" Width="140" Height="40" Background="#C20000" Foreground="White" FontWeight="Bold" Margin="5" Click="CancelAddMedicineButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

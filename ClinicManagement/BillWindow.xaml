@@ -1,0 +1,63 @@
+<Window x:Class="WpfDashboardApp.BillWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Generated Bill" Height="600" Width="400">
+	<Grid>
+		<StackPanel Margin="20,0,20,40">
+			<!-- Bill Header -->
+			<TextBlock Text="Patient Bill Receipt" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18" Margin="0,10"/>
+
+			<!-- Display Date -->
+			<TextBlock x:Name="DateTextBlock" HorizontalAlignment="Left" Margin="0,5"/>
+
+			<TextBlock Text="----------------------------------" FontWeight="Bold" Height="0" RenderTransformOrigin="0.5,0.5" Width="193">
+				<TextBlock.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleY="-1"/>
+					</TransformGroup>
+				</TextBlock.RenderTransform>
+			</TextBlock>
+
+			<!-- Patient ID -->
+			<TextBlock x:Name="PatientIDTextBlock" FontWeight="Bold" Margin="0,5"/>
+
+			<!-- Medicines List -->
+			<TextBlock Text="Medicines List:" FontWeight="Bold" Margin="0,5" />
+
+			<!-- Medicines list in a DataGrid -->
+			<DataGrid x:Name="MedicinesDataGrid" AutoGenerateColumns="False" Height="200">
+				<DataGrid.Columns>
+					<DataGridTextColumn Header="Medicine Name" Binding="{Binding MedicineName}" Width="*" />
+					<DataGridTextColumn Header="QTY" Binding="{Binding Quantity}" Width="*" />
+					<DataGridTextColumn Header="UNIT PRICE" Binding="{Binding PricePerUnit}" Width="*" />
+					<DataGridTextColumn Header="TOTAL PRICE" Binding="{Binding TotalPrice}" Width="*" />
+				</DataGrid.Columns>
+			</DataGrid>
+
+			<!-- Total Amount -->
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0">
+				<TextBlock Text="Total: " FontWeight="Bold"/>
+				<TextBlock x:Name="TotalTextBlock" Margin="10,0"/>
+			</StackPanel>
+
+			<!-- Label and ComboBox side by side (StackPanel Horizontal) -->
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="right" Margin="0,5">
+				<Label Content="Select Payment Method:" Width="140" Height="34" />
+				<ComboBox x:Name="PaymentMethodComboBox" Width="150">
+					<ComboBoxItem Content="Cash"/>
+					<ComboBoxItem Content="Card"/>
+				</ComboBox>
+			</StackPanel>
+
+			<!-- Change Status Button -->
+			<StackPanel HorizontalAlignment="Right" Margin="0,0">
+				<Button x:Name="ChangeStatusButton" Content="Mark as Paid" Width="150" Height="30" Click="ChangeStatusButton_Click"/>
+				<TextBlock x:Name="BillStatusTextBlock" Margin="0,0" HorizontalAlignment="Center"/>
+				<Button x:Name="OkButton" Content="OK" Margin="0,0" Width="100" Height="30" Click="OkButton_Click"/>
+			</StackPanel>
+
+			<!-- Footer -->
+			<TextBlock Text="Thank you for using our service!" HorizontalAlignment="Center" Margin="10,10" FontStyle="Italic" />
+		</StackPanel>
+	</Grid>
+</Window>
